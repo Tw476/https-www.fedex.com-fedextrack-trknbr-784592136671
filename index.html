@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>FedEx Tracking</title>
+
+<link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/FedEx_Express.svg/512px-FedEx_Express.svg.png">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f3f3f3;
+    color:#222;
+}
+
+/* HEADER */
+
+.topbar{
+    background:#4D148C;
+    height:88px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 18px;
+}
+
+/* TEXT LOGO */
+
+.text-logo{
+    display:flex;
+    align-items:flex-start;
+    font-weight:900;
+    font-size:58px;
+    line-height:1;
+    letter-spacing:-4px;
+    font-family:Arial, sans-serif;
+}
+
+.text-logo .fed{
+    color:white;
+}
+
+.ex-wrap{
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+}
+
+.text-logo .ex{
+    color:#ff6600;
+    margin-left:-2px;
+}
+
+.text-logo .reg{
+    position:absolute;
+    right:-14px;
+    bottom:4px;
+    color:#ff6600;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:0;
+}
+
+/* ICONS */
+
+.top-icons{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.user-circle{
+    width:38px;
+    height:38px;
+    border:2px solid white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:18px;
+}
+
+.menu{
+    width:34px;
+}
+
+.menu span{
+    display:block;
+    height:3px;
+    background:white;
+    margin:6px 0;
+    border-radius:3px;
+}
+
+/* PAGE */
+
+.wrapper{
+    padding:35px 0 80px;
+}
+
+.title{
+    text-align:center;
+    color:#0079a8;
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:45px;
+    letter-spacing:.5px;
+}
+
+/* TRACKING */
+
+.tracking-section{
+    display:flex;
+    position:relative;
+    padding-left:90px;
+    padding-right:24px;
+}
+
+/* TIMELINE */
+
+.timeline{
+    position:absolute;
+    left:26px;
+    top:0;
+    width:30px;
+    height:100%;
+}
+
+.line-top{
+    position:absolute;
+    left:12px;
+    top:0;
+    width:10px;
+    height:470px;
+    background:#6a0dad;
+    border-radius:20px;
+}
+
+.line-bottom{
+    position:absolute;
+    left:12px;
+    top:470px;
+    width:10px;
+    height:200px;
+    background:#d6d6d6;
+    border-radius:20px;
+}
+
+/* DOTS */
+
+.dot{
+    position:absolute;
+    width:18px;
+    height:18px;
+    background:white;
+    border:4px solid #6a0dad;
+    border-radius:50%;
+    left:8px;
+}
+
+.dot1{ top:45px; }
+.dot2{ top:185px; }
+.dot3{ top:325px; }
+.dot4{ top:525px; }
+
+/* BIG ICON */
+
+.big-icon{
+    position:absolute;
+    top:392px;
+    left:-6px;
+    width:70px;
+    height:70px;
+    background:#6a0dad;
+    border-radius:50%;
+    border:4px solid white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:42px;
+    font-weight:bold;
+    z-index:10;
+}
+
+/* CONTENT */
+
+.content{
+    width:100%;
+}
+
+.block{
+    margin-bottom:70px;
+}
+
+.block h2{
+    font-size:21px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.location{
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+.label{
+    color:#666;
+    font-style:italic;
+    font-size:18px;
+    margin-bottom:12px;
+}
+
+.date{
+    font-size:18px;
+}
+
+/* ACTIVE AREA */
+
+.active-card{
+    margin-top:20px;
+}
+
+.delivery-header{
+    background:#ececec;
+    border-radius:28px;
+    padding:34px 28px;
+    margin-bottom:42px;
+}
+
+.delivery-header h2{
+    font-size:25px;
+    font-weight:700;
+}
+
+.to{
+    color:#8f8f8f;
+    font-size:20px;
+    margin-bottom:18px;
+}
+
+.to-location{
+    color:#666;
+    font-size:20px;
+    margin-bottom:22px;
+}
+
+.estimate{
+    color:#8f8f8f;
+    font-style:italic;
+    margin-bottom:10px;
+    font-size:18px;
+}
+
+.delivery{
+    color:#666;
+    font-size:18px;
+}
+
+/* SELECT TAB */
+
+.select-tab{
+    margin:60px 24px 0;
+    background:#efefef;
+    padding:24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.select-left small{
+    display:block;
+    color:#666;
+    font-size:14px;
+    margin-bottom:10px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.select-left h3{
+    font-size:28px;
+    font-weight:400;
+    color:#666;
+}
+
+.arrow-down{
+    width:22px;
+    height:22px;
+    border-right:4px solid #666;
+    border-bottom:4px solid #666;
+    transform:rotate(45deg);
+    margin-right:10px;
+}
+
+/* TIMEZONE */
+
+.timezone{
+    margin:0 24px;
+    background:#f6f6f6;
+    padding:24px;
+    border-top:1px solid #ddd;
+    position:relative;
+}
+
+.timezone small{
+    display:block;
+    color:#666;
+    font-size:14px;
+    margin-bottom:10px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.timezone h3{
+    color:#666;
+    font-weight:400;
+    font-size:28px;
+}
+
+/* SUPPORT BUTTON */
+
+.support-btn{
+    position:absolute;
+    right:18px;
+    top:-28px;
+    width:74px;
+    height:74px;
+    background:#6a0dad;
+    border-radius:50%;
+    border:4px solid white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:32px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="topbar">
+
+    <div class="text-logo">
+        <span class="fed">Fed</span>
+
+        <div class="ex-wrap">
+            <span class="ex">Ex</span>
+            <span class="reg">®</span>
+        </div>
+    </div>
+
+    <div class="top-icons">
+
+        <div class="user-circle">
+            👤
+        </div>
+
+        <div class="menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- BODY -->
+
+<div class="wrapper">
+
+    <div class="title">
+        GET STATUS UPDATES
+    </div>
+
+    <div class="tracking-section">
+
+        <!-- TIMELINE -->
+
+        <div class="timeline">
+
+            <div class="line-top"></div>
+            <div class="line-bottom"></div>
+
+            <div class="dot dot1"></div>
+            <div class="dot dot2"></div>
+            <div class="dot dot3"></div>
+            <div class="dot dot4"></div>
+
+            <div class="big-icon">
+                →
+            </div>
+
+        </div>
+
+        <!-- CONTENT -->
+
+        <div class="content">
+
+            <div class="block">
+
+                <h2>FROM</h2>
+
+                <div class="location">
+                    Brooklyn, NY, US
+                </div>
+
+                <div class="label">
+                    Label Created
+                </div>
+
+                <div class="date">
+                    28/04/2026
+                </div>
+
+            </div>
+
+            <div class="block">
+                <h2>PACKAGE RECEIVED BY FEDEX</h2>
+            </div>
+
+            <div class="block">
+                <h2>IN TRANSIT</h2>
+            </div>
+
+            <!-- ACTIVE SECTION -->
+
+            <div class="active-card">
+
+                <div class="delivery-header">
+                    <h2>OUT FOR DELIVERY</h2>
+                </div>
+
+                <div class="to">
+                    TO
+                </div>
+
+                <div class="to-location">
+                    St Independence, MO, US
+                </div>
+
+                <div class="estimate">
+                    Estimated delivery date:
+                </div>
+
+                <div class="delivery">
+                    08/05/2026 by end of day
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- SELECT TAB -->
+
+    <div class="select-tab">
+
+        <div class="select-left">
+            <small>SELECT A TAB</small>
+            <h3>Travel History</h3>
+        </div>
+
+        <div class="arrow-down"></div>
+
+    </div>
+
+    <!-- TIMEZONE -->
+
+    <div class="timezone">
+
+        <small>TIME ZONE</small>
+
+        <h3>Local Scan Time</h3>
+
+        <div class="support-btn">
+            🎧
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
